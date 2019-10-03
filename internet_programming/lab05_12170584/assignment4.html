@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <script>
+            function getResult(){
+                var strNum1 = document.getElementById("num1");
+                var strNum2 = document.getElementById("num2");
+                var num1 = parseInt(strNum1.value);
+                var num2 = parseInt(strNum2.value);
+                var result = num1+num2;
+                document.getElementById("result").value=result;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>덧셈 계산기</h1>
+
+        <form>
+            첫번째 정수:
+            <input type="text" size="10" id="num1">
+            <br>
+            두번째 정수:
+            <input type="text" size="10" id="num2">
+            <br>
+            합계:
+            <input type="text" size="10" id="result">
+            <br>
+            <input type="button" value="계산" onclick="getResult()">
+        </form>
+    </body>
+</html>

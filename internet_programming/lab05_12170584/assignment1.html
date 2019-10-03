@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>방문 시간</title>
+        <script>
+            function showTime(){
+                var today = new Date();
+                var hour = today.getHours();
+                var time;
+                if(hour > 12){
+                    hour= hour - 12;
+                    time = '현재 시간 : ' + '오후' + hour + '시' + today.getMinutes()+'분' + today.getSeconds()+'초';
+                    document.body.style.backgroundColor="lightskyblue";
+                }
+                else{
+                    time = "현재 시간 : " + "오전" + hour + "시" + today.getMinutes()+"분" + today.getSeconds()+"초";
+                    document.body.style.backgroundColor="orange";
+                }
+                document.getElementById('time').innerHTML = time;
+                setTimeout("showTime()",1000);
+            }
+            
+        </script>
+    </head>
+    <body>
+        <h1>오전이면 lightskyblue, 오후이면 orange 배경</h1>
+        <hr>
+
+        <div id='time'></div>
+
+        <script>
+            showTime();
+        </script>
+
+
+
+    </body>
+</html>

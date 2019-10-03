@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            
+    </head>
+    <body>
+            <script>
+                        var n = prompt("스크립트 프롬프트:\n"+"100미만의 정수만 입력:");
+                        var m = parseInt(n);
+                        var i=0;
+                        var sum=0;
+                        if(isNaN(m)) {
+                            alert(n)
+                        }
+                        else if(m >100){
+                            alert("정수"+m+"은 100보다 작지 않습니다.");
+                        }
+                        else{
+                            while(i<=n){
+                                sum+=i;
+                                i++;
+                            }
+                            document.write("1부터 "+m+"까지의 합은"+sum+"입니다.");
+                        }
+                    
+            </script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>book 객체 배열 만들기</title>
+        <script>
+            //HTML5,황기태,20000,CSS3,이재문,50000,Java,한원선,30000,스폰지밥,Grace,60000,C++,Kitae,25000
+            var inputString = prompt("콤마(,)로 분리하면서 책제목 저자 가격 순으로 입력");
+
+            var splitString = inputString.split(',');
+            function printBook(){
+                for(i=0;i<splitString.length;i+=3){
+                myBook = new book(splitString[i],splitString[i+1],splitString[i+2]);
+                myBook.print();
+            }
+            }
+            
+
+           
+
+            function book(title,name,price){
+                this.title = title;
+                this.name = name;
+                this.price = price;
+                
+                this.print = function (){
+                    var str = this.title + ',' + this.name + ',' + this.price;
+                    document.write(str+"<br/>");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>book 객체 배열 만들기</h1>
+        <hr>
+        <div id='print'>
+        </div>
+
+        <script>
+            printBook();
+        </script>
+        
+
+    </body>
+</html>

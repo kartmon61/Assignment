@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>숫자맞추기 게임</title>
+    <meta charset-="UTF-8">
+<script>
+var cnt=0;
+var result = 12;
+
+function getResult(){
+    cnt++;
+    var num1 = document.getElementById("num1");
+    var num2 = document.getElementById("num2");
+    var num3 = document.getElementById("num3");
+   
+    var number = parseInt(num1.value);
+    num2.value = cnt;
+    if(number < 1 || number>100){
+        alert("정수의 범위는 1부터 100");
+    }
+    else if(number < result){num3.value="낮습니다";}
+    else if(number == result){num3.value="성공입니다";
+    alert(cnt+"번째 성공입니다")
+    }
+    else if(number > result){num3.value="높습니다";}
+
+}
+</script>
+</head>
+
+<body>
+  <h1>숫자 맞추기 게임</h1>
+  <p>이 게임은 컴퓨터가 생성한 숫자를 맞추는 게임입니다. 숫자는 1부터 100사이에 있습니다</p>
+  
+  <form>
+        숫자 :
+        <input type="text" size="10" value="" id="num1" >
+        <input type="button" value="확인" onclick="getResult()">
+        <br>
+        추측횟수:
+        <input type="text" size="10" id="num2">
+        힌트:
+        <input type="text" size="10" id="num3">
+    </form>
+
+</body>
+</html>
