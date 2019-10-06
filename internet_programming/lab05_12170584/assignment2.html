@@ -8,10 +8,15 @@
 
             var splitString = inputString.split(',');
             function printBook(){
-                for(i=0;i<splitString.length;i+=3){
-                myBook = new book(splitString[i],splitString[i+1],splitString[i+2]);
-                myBook.print();
-            }
+                if(splitString.length%3 == 0){
+                    for(i=0;i<splitString.length;i+=3){
+                    myBook = new book(splitString[i],splitString[i+1],splitString[i+2]);
+                    myBook.print();
+                    }
+                }
+                else{
+                    alert("문제 발생");
+                    }
             }
             
 
