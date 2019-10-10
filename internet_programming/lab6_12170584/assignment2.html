@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function showTime(){
+                var today = new Date();
+                var hour = today.getHours();
+                var min = today.getMinutes();
+                var sec = today.getSeconds();
+
+                if(sec%2==0){
+                    time = '현재 시간 : ' + hour + '시' + min+'분' + sec+'초';
+                    document.body.style.backgroundColor="violet";
+                }
+                else{
+                    time = '현재 시간 : ' + hour + '시' + min+'분' + sec+'초';
+                    document.body.style.backgroundColor="lightskyblue";
+                }
+                document.getElementById('time').innerHTML = time;
+                setTimeout('showTime()',1000);
+            }
+        
+        </script>
+    </head>
+    <body>
+        <h1>페이지 방문 초시간이 짝수이면 violet, 홀수이면 lightskyblue 배경</h1>
+        <hr>
+
+        <div id='time'></div>
+
+        <script>
+            showTime();
+        </script>
+
+    </body>
+</html>

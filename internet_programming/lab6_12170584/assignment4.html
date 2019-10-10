@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            
+            var random = new Array();
+
+            document.writeln("<h1>정수 5개 입력 받아 역순으로 출력</h1>");
+            document.writeln("<hr>");
+            for(i=0;i<10;i++){
+                randomNum = Math.floor(Math.random()*100)+1;
+                document.write(randomNum+' ');
+                random[i] = randomNum;
+            }
+            random.sort(function(a,b){return a-b});
+            document.writeln("<hr>");
+            document.writeln("제일 큰 수는 "+random[9]);
+        </script>
+    </head>
+    
+    <body> 
+    </body>
+</html>

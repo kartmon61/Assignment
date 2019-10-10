@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            var inputString = prompt("정수 입력");
+
+            var splitString = inputString.split(',');
+            var splitInt = new Array();
+            for(i=0;i<splitString.length;i++){
+                splitInt[i] = parseInt(splitString[i]);
+            }
+            splitInt.sort(function(a,b){return b-a});
+            document.writeln("<h1>정수 5개 입력 받아 역순으로 출력</h1>");
+            document.writeln("<hr>");
+            document.writeln(splitInt);
+        </script>
+    </head>
+    
+    <body> 
+    </body>
+</html>
