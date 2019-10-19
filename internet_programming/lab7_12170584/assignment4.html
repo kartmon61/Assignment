@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            
+            var str='';
+            var strtotal='';
+            var num1=0;
+            var num2=0;
+            
+            function cal(num){
+                var output = document.getElementById("output")
+                
+                if(num>=0 && num<=9){
+                    str+=num;
+                    strtotal+=num;
+                    
+                }
+                else if(num == '+'){
+                    if(str==''){
+                        alert("error");
+                    }
+                    else{
+                        num1 = parseInt(str);
+                        str='';
+                        strtotal+=num;
+                    }
+                    
+                }
+                else if(num == 'clr'){
+                    
+                    str='';
+                    strtotal='';
+                     
+                }
+                
+                else if(num == 'enter'){
+                    if(str==''){
+                        alert("error");
+                        str='';
+                        strtotal='';
+                    }
+                    else if(num1 == 0){
+                        alert("error");
+                        str='';
+                        strtotal='';
+                    }
+                    else{
+                        num2=parseInt(str);
+                        var result = eval(output.value);
+                        strtotal = result;
+                        str = result;
+                    }
+                }
+                output.value=strtotal;  
+            }
+
+            function whatkeyDown(e){
+                e.preventDefault();
+
+                if(e.keyCode > 47 && e.keyCode < 58){
+                    num = e.keyCode - 48;
+                    cal(num);
+                }
+                else if(e.keyCode == 187){
+                    cal('+');
+                }
+                else if( e.keyCode == 13){
+                    cal('enter');
+                }
+                else if(e.keyCode == 8){
+                    cal('clr');
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <form>
+            display <input type="text" size='20' value='' id="output" onkeydown="whatkeyDown(event)">
+            <br>
+            <input type="button" value='7' onclick="cal(7)"> 
+            <input type="button" value='8' onclick="cal(8)">
+            <input type="button" value='9' onclick="cal(9)">
+            <br>
+            <input type="button" value='4' onclick="cal(4)">
+            <input type="button" value='5' onclick="cal(5)">
+            <input type="button" value='6' onclick="cal(6)">
+            <br>
+            <input type="button" value='1' onclick="cal(1)">
+            <input type="button" value='2' onclick="cal(2)">
+            <input type="button" value='3' onclick="cal(3)">
+            <br>
+            <input type="button" value='0' onclick="cal(0)">
+            <input type="button" value='+' onclick="cal('+')">
+            <br>
+            <input type="button" value='clear' onclick="cal('clr')">
+            <input type="button" value='Enter' onclick="cal('enter')">
+            <script></script>
+
+        </form>
+    </body>
+</html>
