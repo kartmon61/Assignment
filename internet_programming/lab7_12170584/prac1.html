@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            window.onmousemove = function(e){
+                var dog = document.getElementById('dog');
+                dog.style.left = e.clientX + 'px';
+                dog.style.top = e.clientY + 'px';
+            }
+        </script>
+        <style>
+            #dog {
+                width : 30px;
+                height : 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>이미지 커서 만들기</h1>
+        <hr>
+        마우스를 움직이면 이미지로 만든 커서가 마우스를 따라 다닙니다.
+        <img src='dog.png' style='position: absolute' id="dog">
+        <script>
+        </script>
+    </body>
+</html>

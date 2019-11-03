@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function wheel(e,img){
+                if(e.wheelDelta < 0){
+                    img.width = img.width*1.05;
+                    img.height = img.height*1.05;
+                }
+                else{
+                    img.width = img.width*0.95;
+                    img.height = img.height*0.95;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>마우스 휠을 이용한 이미지 확대/축소</h1>
+        <img src='dogImg.jpeg' id='dog' onwheel="wheel(event,this)">
+        <script></script>
+    </body>
+</html>

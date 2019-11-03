@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> 사이트 접속 </title> 
+
+        <script>
+            function load(){
+                
+                var b = "";
+                    var ua = window.navigator.userAgent;
+                if (ua.indexOf('MSIE') > 0 || ua.indexOf('Trident') > 0)
+                    b = "IE";
+                else if (ua.indexOf('Chrome') > 0)
+                    b = "Chrome";
+                
+                alert(b + "브라우저 입니다.");
+
+                var select = document.getElementById("site");
+                var win = window.open(select.options[select.selectedIndex].value);
+            }
+            
+        </script>
+    </head>
+    <body>
+        <h2> 옵션 선택으로 사이트 접속 </h2>
+        <br>
+        <p> 옵션 선택 마다 새 윈도우에 접속합니다. </p>
+        <hr>
+        접속할 사이트<br>
+        <select id = "site" name = "site" style="margin-top: 10px;"
+        onchange="load()">
+            <option value = "#" selected> 선택 </option> 
+            <option value = "http://www.naver.com" id="naver"> 네이버 </option> 
+            <option value ="http://www.daum.net" id="daum"> 다음 </option>
+            <option value ="http://www.google.com" id="google Chrome"> 구글 </option>
+            <option value="http://www.microsoft.com" id="microsoft">마이크로소프트
+        </select>
+        
+    </body>
+</html>

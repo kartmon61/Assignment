@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            var randNum = new Array();
+            for(i=0;i<10;i++){
+                randNum[i] = Math.floor(Math.random()*100)+1;
+                
+            }
+            document.writeln(randNum);
+            randNum.sort(function(a,b){
+                return b-a;
+            })
+            document.writeln('제일 큰 수는'+randNum[0]);
+        </script>
+    </head>
+    <body>
+        <div id='num'></div>
+        <div id='maxNum'></div>
+        <script></script>
+    </body>
+</html>

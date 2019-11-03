@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function Book(title,author,price){
+                this.title = title;
+                this.author = author;
+                this.price = price;
+
+                this.print= function(){
+                    document.writeln(this.title+','+this.author+','+this.price+'<br>');
+                }
+            }
+            var book = prompt(',로 분리하면서 책 제목 저자 가격순으로 입력');
+            
+            var parseBook = book.split(',');
+            for(i=0;i<parseBook.length;i+=3){
+                book = new Book(parseBook[i],parseBook[i+1],parseBook[i+2]);
+                book.print();
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

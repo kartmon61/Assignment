@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> 폼으로 도형 그리기 </title> 
+        <style>
+            td {
+                text-align: right;
+            }
+        </style>
+        <script>  
+            function draw1(){
+                var canvas = document.getElementById('myCanvas');
+                ctx = canvas.getContext('2d');
+                var x = parseInt(document.getElementById('x').value);
+                var y = parseInt(document.getElementById('y').value);
+                var radius = parseInt(document.getElementById('radius').value);
+                var start = parseInt(document.getElementById('start').value);
+                var end = parseInt(document.getElementById('end').value);
+                var color = document.getElementById("color").value
+
+                var select = document.getElementById("anticlockwise");
+                var anticlockwise = select.options[select.selectedIndex].value;
+                var line = parseInt(document.getElementById('lineWidth').value);
+
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.arc(x, y, radius, start*Math.PI/180, end*Math.PI/180, anticlockwise);
+                ctx.lineWidth = line;
+                ctx.stroke();
+            }
+
+            function reset1(){
+                var canvas = document.getElementById('myCanvas');
+                ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+            }
+        </script>
+    </head>
+    <body>
+        <h2> 폼으로 도형 그리기 </h2>
+        <hr>
+        <form>
+            <table>
+                <tr>
+                    <td>x <input type="text" id="x"></td>
+                    <td>y <input type="text" id="y"></td>
+                </tr>
+                <tr>
+                    <td>반지름 <input type="text" id="radius"></td>
+                    <td>방향 <select id="anticlockwise">
+                            <option value="true"> 시계방향 </option>
+                            <option value="false"> 반시계방향 </option>
+                        </select> </td>
+                </tr>
+                <tr>
+                    <td>시작각도 <input type="text" id="start"></td>
+                    <td>끝각도 <input type="text" id="end"></td>
+                </tr>
+                <tr>
+                    <td>선굵기 <input type="text" id="lineWidth"></td>
+                    <td>선색 <input type="color" id="color"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="그리기" onclick="draw1()"></td>
+                    <td><input type="button" value="지우기" onclick="reset1()"></td>
+                </tr>
+            </table>      
+        </form>
+       
+        
+        <canvas id="myCanvas" width="300" height="200"></canvas>
+
+    </body>
+</html>

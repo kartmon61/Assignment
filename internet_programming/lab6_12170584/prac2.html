@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            var strNum = prompt('정수 입력');
+            var splitStrNum = strNum.split(',');
+            var splitNum = new Array();
+            for(i=0;i<splitStrNum.length;i++){
+                splitNum[i]=parseInt(splitStrNum[i]);
+            }
+            splitNum.sort(function(a,b){
+                return b-a;
+            });
+            document.writeln(splitNum);
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
