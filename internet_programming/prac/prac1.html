@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="EUC-KR">
+<title>admin</title>
+
+<style> 
+		#topMenu 
+        { // topMenu의 ID를 가진 태그의 스타일 지정 
+			height: 30px; // topMenu의 높이를 30px로 설정(제대로 설정 안하면 아래 내용이 깨짐) 
+			width: 850px; // topMenu의 넓이를 850px로 설정(제대로 설정 안하면 브라우져 넓이가 좁아지면 깨짐) 
+		} 
+		
+		#topMenu ul li 
+        { // topMenu의 ID를 가진 태그 안에 <ul> 태그 안에 <li> 태그의 스타일을 지정 
+			list-style: none; // <li> 태그는 위의 이미지처럼 목록을 나타내는 점을 없앤다 
+			color: white; // 글씨 색을 흰색으로 설정 
+			background-color: #2d2d2d; // 배경색을 진한 회색(RGB(2D,2D,2D)으로 설정 
+			float: left; // <li>태그들이 왼쪽에 흐르게 설정(그러면 아래있는 내용은 오른쪽으로 옴) 
+			line-height: 30px; // 글씨가 가운데로 오도록 설정하기 위해 한줄의 높이를 30px로 설정 
+			vertical-align: middle; // 세로 정렬을 가운데로 설정(위의 line-height와 같이 설정 필요함) 
+			text-align: center; // 글씨 정렬을 가운데로 설정 
+		} 
+		#topMenu .menuLink 
+        { // topMenu 아이디를 가진 태그 안에 있는 menuLink 클래스 태그들의 스타일 설정 
+			text-decoration:none; // 링크(<a> 태그)가 가지는 기본 꾸밈 효과(밑줄 등)을 없앰 
+			color: white; // 폰트색을 흰색으로 설정 
+			display: block; // 링크를 글씨가 있는 부분 뿐만아니라 전체 영역을 클릭해도 링크가 걸리게 설정 
+			width: 150px; // 메뉴링크의 넓이 설정 
+			font-size: 12px; // 폰트 사이즈 12px로 설정 
+			font-weight: bold; // 폰트를 굵게 
+			font-family: "Trebuchet MS", Dotum, Arial; // 기본 폰트 적용, 시스템 폰트를 종류별로 순서대로 
+		} 
+		#topMenu .menuLink:hover 
+        { //topMenu 아이디를 가진 태그 안에 menuLink클래스를 가진 태그에 마우스가 over되면 스타일 설정 
+			color: red; // 글씨 색을 붉은색으로 설정 
+			background-color: #4d4d4d; // 배경색을 조금 더 밝은 회색으로 설정 
+		} 
+</style>
+
+</head>
+<body>
+
+
+<div id="infotable" ></div>
+<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCyxIifukvB1BAugv366VUSsCYdNqdd298",
+    authDomain: "assignment3-f24f5.firebaseapp.com",
+    databaseURL: "https://assignment3-f24f5.firebaseio.com",
+    projectId: "assignment3-f24f5",
+    storageBucket: "assignment3-f24f5.appspot.com",
+    messagingSenderId: "98436114445",
+    appId: "1:98436114445:web:eecb29694f3344896d4d44"
+  };
+  firebase.initializeApp(firebaseConfig); 
+</script>
+
+<!-- <script>
+allUserdata();
+
+function allUserdata(){
+   var user_data = firebase.database().ref('user_data');
+   user_data.once('value', function(snapshot) {
+       snapshot.forEach(function(childSnapshot) {
+         var tmp = childSnapshot.val();
+         allUserProfile(tmp.user_id, tmp.last_login);
+       });
+     });
+}
+function allUserProfile(id, time){
+   table = document.getElementById("infotable");
+   var user_data = firebase.database().ref('user_profile/'+id);
+   user_data.once('value', function(snapshot) {
+         var tmp = snapshot.val();
+         
+         new_tr = document.createElement("form");
+         
+         var jbBtn = document.createElement( 'p' );
+         var jbBtnText = document.createTextNode( 'id : ' );
+         jbBtn.appendChild( jbBtnText );
+         
+         
+         td_id = document.createElement("input");
+         td_id.setAttribute("type", "text");
+         td_id.setAttribute("value", id);
+         jbBtn.appendChild(td_id);
+         new_tr.appendChild(jbBtn);
+
+         
+         
+         var jbBtn2 = document.createElement( 'p' );
+         var jbBtnText2 = document.createTextNode( '이름 : ' );
+         jbBtn2.appendChild( jbBtnText2 );
+         td_name = document.createElement("input");
+         td_name.setAttribute("type", "text");
+         td_name.setAttribute("value", tmp.user_name);
+         
+         jbBtn2.appendChild(td_name);
+         new_tr.appendChild(jbBtn2);
+         
+         
+         var jbBtn3 = document.createElement( 'p' );
+         var jbBtnText3 = document.createTextNode( '학년 : ' );
+         jbBtn3.appendChild( jbBtnText3 );
+         td_grade = document.createElement("input");
+         td_grade.setAttribute("type", "text");
+         td_grade.setAttribute("value", tmp.user_grade);
+         jbBtn3.appendChild(td_grade);
+         new_tr.appendChild(jbBtn3);
+
+         
+         var jbBtn4 = document.createElement( 'p' );
+         var jbBtnText4 = document.createTextNode( '전공 : ' );
+         jbBtn4.appendChild( jbBtnText4 );
+         td_major = document.createElement("input");
+         td_major.setAttribute("type", "text");
+         td_major.setAttribute("value", tmp.user_major);
+         jbBtn4.appendChild(td_major);
+         new_tr.appendChild(jbBtn4);
+
+         
+         
+         
+         var jbBtn5 = document.createElement( 'p' );
+         var jbBtnText5 = document.createTextNode( '관심사 : ' );
+         jbBtn5.appendChild( jbBtnText5 );
+         td_h = document.createElement("input");
+         td_h.setAttribute("type", "text");
+         td_h.setAttribute("value", tmp.user_hobby);
+         jbBtn5.appendChild(td_h);
+         new_tr.appendChild(jbBtn5);
+         
+         
+         var jbBtn6 = document.createElement( 'p' );
+         var jbBtnText6 = document.createTextNode( '성별 : ' );
+         jbBtn6.appendChild( jbBtnText6 );
+         td_sex = document.createElement("input");
+         td_sex.setAttribute("type", "text");
+         td_sex.setAttribute("value", tmp.user_sex);
+         jbBtn6.appendChild(td_sex);
+         new_tr.appendChild(jbBtn6);
+         
+         
+         
+         var jbBtn7 = document.createElement( 'p' );
+         var jbBtnText7 = document.createTextNode( '접속시간 : ' );
+         jbBtn7.appendChild( jbBtnText7 );
+         td_time = document.createElement("input");
+         td_time.setAttribute("type", "text");
+         td_time.setAttribute("value", time);
+         jbBtn7.appendChild(td_time);
+         new_tr.appendChild(jbBtn7);
+         
+         
+         table.appendChild(new_tr);
+     });
+}
+</script> -->
+<nav id="topMenu" > 
+	<ul> 
+		<li><a class="menuLink" href="#">공지사항</a></li>
+	 	<li><a class="menuLink" href="#">자유게시판</a></li> 
+	 	<li><a class="menuLink" href="#">대학생활팁</a></li> 
+	 	<li><a class="menuLink" href="#">장터게시판</a></li> 
+	</ul> 
+</nav>
+</body>
+</html>
